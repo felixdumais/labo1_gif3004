@@ -8,17 +8,37 @@
         {
             "type": "gdb",
             "request": "attach",
-            "gdbpath": "${env:HOME}/arm-cross-comp-env/arm-raspbian-linux-gnueabi/bin/arm-raspbian-linux-gnueabi-gdb",
+            "gdbpath": "${HOME}/arm-cross-comp-env/arm-raspbian-linux-gnueabi/bin/arm-raspbian-linux-gnueabi-gdb",
             "name": "Debogage distant avec gdbserver",
             "executable": "./build/SETR_TP1",
-            "target": "adresse_de_votre_raspberry_pi:4567",
+            "target": "192.168.43.240:4567",
             "remote": true,
             "autorun": [
-                "set sysroot ${env:HOME}/arm-cross-comp-env/arm-raspbian-linux-gnueabi/arm-raspbian-linux-gnueabi/sysroot/"
+                "set sysroot ${HOME}/arm-cross-comp-env/arm-raspbian-linux-gnueabi/arm-raspbian-linux-gnueabi/sysroot/"
             ],
             "cwd": "${workspaceRoot}",
-            "preLaunchTask": "syncAndStartGDB"
-        }
+            // "preLaunchTask": "syncAndStartGDB"
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/tp1", 
+            "args": [], 
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb", 
+            "setupCommands": [
+              {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }
+            ]
+          }
 
     ]
 }
