@@ -40,6 +40,7 @@ void maFonctionDeTri(int* base, int num, int size, int (*cmpfunc)(const void*,co
 	// Implementation naive du tri par insertion
 	// Reference : https://en.wikipedia.org/wiki/Insertion_sort
 	int tmp, j;
+	printf("Size: %d\n", size);
 
 	for(int i=0; i<num; i++){
 		tmp = base[i];
@@ -56,7 +57,7 @@ void maFonctionDeTri(int* base, int num, int size, int (*cmpfunc)(const void*,co
 void initTableau(int* t, int len, char typeinit){
 	// Fonction implementant les differents modes d'initialisation
 	// decrits plus haut
-
+	int s;
 	switch(typeinit){
 	case INIT_ORDONNE:
 		for(int i=0; i<len; i++)
@@ -72,7 +73,7 @@ void initTableau(int* t, int len, char typeinit){
 		for(int i=0; i<len; i++)
 			t[i] = i+1;
 
-		int s = t[len/2];
+		s = t[len/2];
 		t[len/2] = t[len/2+1];
 		t[len/2+1] = s;
 		break;
